@@ -239,6 +239,9 @@ svg.line-top {
   background-color: #17141d;
 }
 svg.line-bottom {
+  position: absolute;
+  top: 50px;
+  left: 90px;
   width: 100%;
 }
 .menu {
@@ -340,4 +343,9 @@ button {
 button:hover {
   background-color: rgba(0, 191, 255, 0.594);
   transition: 0.5s;
+}
+
+a {
+  text-decoration: none;
+  color: white;
 }

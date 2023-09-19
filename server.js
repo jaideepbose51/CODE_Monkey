@@ -20,15 +20,19 @@ app.listen(port, (err) => {
 });
 
 app.get("/", (req, res) => {
-    res.sendFile(_dirname + "/view/login.html");
+    res.render("login.ejs");
 });
 
 app.get("/singin", (req, res) => {
-    res.sendFile(_dirname + "/view/singup.html");
+    res.render("singup.ejs");
 });
 
 app.get("/TouristOrGuide",(req,res)=>{
-    res.sendFile(_dirname+"/view/TorG.html")
+    res.render("TorG.ejs")
+})
+
+app.get("/about",(req,res)=>{
+    res.render("about.ejs")
 })
 
 app.post("/login_submit", (req, res) => {
