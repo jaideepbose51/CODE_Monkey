@@ -36,16 +36,6 @@ app.set('view engine', 'ejs');
 
 var data;
 
-// Use the correct model name, which is GuideModel
-try {
-    const documents = await GuideModel.find({});
-    data=documents;
-  } catch (err) {
-    console.error(err);
-  }
-  
-
-
 // Place the bodyParser middleware before your routes
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -57,9 +47,18 @@ app.listen(port, (err) => {
     console.log(`Server running on port ${port}`);
 });
 
-app.get("/", (req, res) => {
-    res.render("home.ejs",{ data });
-});
+app.get("/", async (req, res) => {
+    try {
+      const documents = await GuideModel.find({});
+      const data = documents; // Define the 'data' variable here
+      res.render("home.ejs", { data });
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Internal Server Error"); // Handle the error gracefully
+    }
+  });
+  
+
 
 app.get("/login",(req,res)=>{
     res.render("login.ejs");
@@ -91,14 +90,7 @@ app.post("/submitguideinfo",(req,res)=>{
       // Create a new Guide instance and save it using the model
   const guideInstance = new GuideModel(guideData); // Use GuideModel here
   guideInstance.save();
-
-
-
-  
-
-
-
-  res.send("ok");
+  res.render("registered.ejs");
 })
 
 app.get("/about",(req,res)=>{
@@ -126,5 +118,11 @@ else {
 }});
 
 app.post("/sbm",(req,res)=>{
+    console.log(req.body);
     res.render("tick.ejs");
+})
+
+app.post("/tcomplain",(req,res)=>{
+    console.log(req.body);
+    res.render("tickcomplain.ejs");
 })

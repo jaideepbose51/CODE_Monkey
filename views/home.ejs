@@ -84,7 +84,7 @@
                     <div class="card">
                         <div class="zoom-img">
                             <div class="img-card">
-                                <img src="/public/images/homebangalore.jpg">
+                                <img src="/public/images/homegoa.jpg">
                             </div>
                         </div>
                         <hr>
@@ -251,9 +251,32 @@
                         <h3>Swachh Bharat Mission</h3>
                         <form action="/sbm" method="post">
                             <div class="card-bottom">
-                                <input type="" class="email" name="" placeholder="Enter the location : " size="50">
+                                <input class="email" name="location" placeholder="Enter the location : " size="50" required>
                                 <div class="card-bottom">
-                                    <input type="" class="email" name="" placeholder="Enter the complaint : " size="50">
+                                    <input type="" class="email" name="complaint" placeholder="Enter the complaint : "
+                                        size="50" required>
+                                    <input type="file" id="myfile" name="myfile">
+                                    <div class="btn-grp">
+                                        <button>Add complaint</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+            </section>
+            <section class="main">
+                <div class="main-card">
+                    <div class="card-top">
+                        <h3>TOURIST HELPLINE</h3>
+                        <h3>Compliant about the guide : </h3>
+                        <form action="/tcomplain" method="post">
+                            <div class="card-bottom">
+                                <input type="" class="text" name="name" placeholder="Enter the guide name : " size="50" required>
+                                <div class="card-bottom">
+                                    <input type="number" class="email" name="no"
+                                        placeholder="Enter guide's mobile number : " size="50" required>
+                                    <input type="text" class="email" name="complaint"
+                                        placeholder="Enter the complaint : " size="50" required>
                                     <div class="btn-grp">
                                         <button>Add complaint</button>
                                     </div>
