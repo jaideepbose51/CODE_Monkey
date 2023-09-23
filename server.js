@@ -4,6 +4,8 @@ import { fileURLToPath } from "url";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import { stringify } from "querystring";
+import ejs from "ejs";
+
 
 mongoose.connect("mongodb+srv://jaideep:Jaideep03@cluster0.udm7ere.mongodb.net/code_monkeys", {
   useNewUrlParser: true,
@@ -27,12 +29,17 @@ const _dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 const port = 3000;
 
+
+
+app.set('view engine', 'ejs');
+
+
 var data;
 
 // Use the correct model name, which is GuideModel
 try {
     const documents = await GuideModel.find({});
-    console.log(documents);
+    data=documents;
   } catch (err) {
     console.error(err);
   }
@@ -51,8 +58,7 @@ app.listen(port, (err) => {
 });
 
 app.get("/", (req, res) => {
-
-    res.render("home.ejs");
+    res.render("home.ejs",{ data });
 });
 
 app.get("/login",(req,res)=>{
@@ -87,14 +93,7 @@ app.post("/submitguideinfo",(req,res)=>{
   guideInstance.save();
 
 
-// Use the correct model name, which is GuideModel
-MyModel.find({}, (err, documents) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    console.log(documents); // This will contain an array of documents
-  });
+
   
 
 
@@ -124,6 +123,8 @@ app.post("/TorGsubmit", (req,res)=>{
     
 else {
     res.redirect("/");
-}
+}});
 
+app.post("/sbm",(req,res)=>{
+    res.render("tick.ejs");
 })

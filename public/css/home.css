@@ -52,16 +52,24 @@ body {
 }
 
 .cards .text {
+  z-index: 0;
   padding: 20px;
   font-family: Barlow Condensed;
-  line-height: 50px;
+  line-height: 10px;
+  font-size: 15px;
+}
+
+#des {
+  font-size: large;
+  line-height: 20px;
+  color: #4b505e;
 }
 
 .cards .card-box {
   display: flex;
   flex-flow: row;
   background-color: rgb(89, 177, 207);
-  font-size: 10px;
+  font-size: 17px;
   font-family: Roboto;
   align-items: center;
   justify-content: center;
