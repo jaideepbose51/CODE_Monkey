@@ -42,10 +42,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Serve static files from the _dirname directory
 app.use(express.static(_dirname));
 
-app.listen(port, (err) => {
-    if (err) throw err;
-    console.log(`Server running on port ${port}`);
-});
+
 
 app.get("/", async (req, res) => {
     try {
@@ -126,3 +123,8 @@ app.post("/tcomplain",(req,res)=>{
     console.log(req.body);
     res.render("tickcomplain.ejs");
 })
+
+app.listen(port, (err) => {
+    if (err) throw err;
+    console.log(`Server running on port ${port}`);
+});
